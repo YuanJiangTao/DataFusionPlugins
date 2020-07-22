@@ -1,0 +1,16 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+                    xmlns:vm="clr-namespace:DataFusionPlatformPlugin.ViewModel"
+                    >
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary>
+            <vm:ViewModelLocator x:Key="Locator"></vm:ViewModelLocator>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/DataFusionPlatformPlugin;component/Themes/SqlSettingControl.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/DataFusionPlatformPlugin;component/Themes/KvSettingControl.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/DataFusionPlatformPlugin;component/Themes/ProtocalControl.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

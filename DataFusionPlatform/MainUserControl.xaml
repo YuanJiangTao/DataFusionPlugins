@@ -1,0 +1,97 @@
+﻿<UserControl x:Class="DataFusionPlatformPlugin.MainUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DataFusionPlatformPlugin"
+             mc:Ignorable="d"  
+             xmlns:customControls="clr-namespace:DataFusionPlatformPlugin.CustomControls"
+             xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls" 
+             xmlns:Behaviors="http://schemas.microsoft.com/xaml/behaviors"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Themes/Light.Blue.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.AnimatedTabControl.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.ToggleSwitch.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/DataFusionPlatformPlugin;component/Themes/HamburgerMenuRippleStyle.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <controls:HamburgerMenu x:Name="HamburgerMenuControl" HamburgerVisibility="Collapsed"
+                                    HamburgerWidth="30" HamburgerHeight="0"
+                                    IsPaneOpen="True"   OpenPaneLength="100"
+                                    ItemInvoked="HamburgerMenuControl_ItemInvoked"
+                                    ItemTemplate="{StaticResource MenuItemTemplate}"
+                                    OptionsItemTemplate="{StaticResource MenuItemTemplate}"
+                                    Style="{StaticResource HamburgerMenuCreatorsStyle}"
+                                    ItemsSource="{Binding MenuItems}"
+                                    VerticalScrollBarOnLeftSide="False">
+            <controls:HamburgerMenu.ContentTemplate>
+                <DataTemplate DataType="{x:Type controls:HamburgerMenuItem}">
+                    <Grid  Margin="20 0 10 0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <ScrollViewer Grid.Row="1"
+                                          Focusable="False" 
+                                          HorizontalScrollBarVisibility="Disabled"
+                                          VerticalScrollBarVisibility="Auto">
+                            <ContentControl  Focusable="False"  Content="{Binding Tag}" />
+                        </ScrollViewer>
+                    </Grid>
+                </DataTemplate>
+            </controls:HamburgerMenu.ContentTemplate>
+        </controls:HamburgerMenu>
+        <!--<Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition  />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <controls:ToggleSwitch Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" OnLabel="开始" OffLabel="暂停" 
+                               Style="{StaticResource MahApps.Styles.ToggleSwitch.Win10}"  />
+        <customControls:SqlSettingControl Grid.Row="1" Grid.Column="0" DataContext="{Binding DatabaseViewModel}"
+                                             ServerName="{Binding ServerName}"
+                                                  DatabaseName="{Binding DatabaseName}"
+                                                  UserId="{Binding UserId}"
+                                                  Password="{Binding Password}"
+                                                  ConnectCommand="{Binding ConnectCommand}"/>-->
+        <!--<StackPanel>
+            <controls:HamburgerMenu>
+                
+            </controls:HamburgerMenu>
+            <controls:MetroAnimatedTabControl x:Name="AnimatedTabControl" ItemsSource="{Binding TabItems}" Height="150">
+                <controls:MetroAnimatedTabControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <ContentPresenter Content="{Binding Title}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </controls:MetroAnimatedTabControl.ItemTemplate>
+                <controls:MetroAnimatedTabControl.ContentTemplate>
+                    <DataTemplate>
+                        <ContentPresenter Content="{Binding Content}">
+                        </ContentPresenter>
+                    </DataTemplate>
+                </controls:MetroAnimatedTabControl.ContentTemplate>
+
+            </controls:MetroAnimatedTabControl>
+        </StackPanel>-->
+        <!--<Button Content="测 试"  Style="{StaticResource MahApps.Styles.Button.MetroAccentSquare}">
+            <Behaviors:Interaction.Triggers>
+                <Behaviors:EventTrigger EventName="Click">
+                    <Behaviors:InvokeCommandAction Command="{Binding TestCommand}" />
+                </Behaviors:EventTrigger>
+            </Behaviors:Interaction.Triggers>
+        </Button>-->
+    </Grid>
+</UserControl>
